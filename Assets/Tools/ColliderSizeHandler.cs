@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace JunkCity
+namespace JunkCity.Tools
 {
     [RequireComponent(typeof(SpriteRenderer), typeof(BoxCollider2D))]
     public class ColliderSizeHandler : MonoBehaviour

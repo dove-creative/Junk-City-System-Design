@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace JunkCity.Infrastructure
+namespace JunkCity.World
 {
     public class World : MonoBehaviour
     {

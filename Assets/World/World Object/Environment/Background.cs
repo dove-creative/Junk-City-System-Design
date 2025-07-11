@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace JunkCity.Infrastructure
+namespace JunkCity.World
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class Background : MonoBehaviour

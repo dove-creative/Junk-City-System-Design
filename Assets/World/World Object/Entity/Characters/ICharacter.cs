@@ -1,4 +1,4 @@
-namespace JunkCity.Infrastructure
+namespace JunkCity.World
 {
     public interface ICharacter
     {

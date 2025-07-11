@@ -1,10 +1,15 @@
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 
-namespace JunkCity.Infrastructure
+namespace JunkCity.World
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class CharacterController : MonoBehaviour
+    public class CharacterDriver : MonoBehaviour
     {
+        public ReadOnlyCollection<IInteractable> CurrentInteractableEntities { get; private set; }
+        private List<IInteractable> currentInteractableEntities;
+
         [Header("Global Motion Settings")]
         public float Gravity
         {
@@ -20,13 +25,32 @@ namespace JunkCity.Infrastructure
         [Header("Vertical Motion Settings")]
         public float JumpForce = 25;
 
-        private float direction = 0f;
+        private float direction = 0;
         private Rigidbody2D rb;
 
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
+
+            currentInteractableEntities = new();
+            CurrentInteractableEntities = currentInteractableEntities.AsReadOnly();
+        }
+
+
+        private void OnTriggerEnter2D(Collider2D collider)
+        {
+            if (!collider.gameObject.TryGetComponent<IInteractable>(out var target))
+                return;
+
+            currentInteractableEntities.Add(target);
+        }
+        private void OnTriggerExit2D(Collider2D collider)
+        {
+            if (!collider.gameObject.TryGetComponent<IInteractable>(out var target))
+                return;
+
+            currentInteractableEntities.Remove(target);
         }
 
         public void MoveHorizontal(float direction)
@@ -35,7 +59,7 @@ namespace JunkCity.Infrastructure
         }
         public void Jump(float value)
         {
-            if (value > 0 && Mathf.Approximately(rb.linearVelocityY, 0f))
+            if (value > 0 && Mathf.Approximately(rb.linearVelocityY, 0))
                 rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
         }
 
@@ -43,7 +67,7 @@ namespace JunkCity.Infrastructure
         {
             if (direction != 0)
                 rb.AddForce(direction * MoveForce * Vector2.right);
-            else if (!Mathf.Approximately(rb.linearVelocityX, 0f))
+            else if (!Mathf.Approximately(rb.linearVelocityX, 0))
                 rb.AddForce(FrictionRatio * -rb.linearVelocityX * Vector2.right);
             else
                 rb.linearVelocityX = 0;

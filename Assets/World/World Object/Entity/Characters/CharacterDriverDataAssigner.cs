@@ -1,14 +1,14 @@
 using UnityEngine;
 
-namespace JunkCity.Infrastructure
+namespace JunkCity.World
 {
-    [RequireComponent(typeof(CharacterController))]
-    public class AssignCharacterControllerData : MonoBehaviour
+    [RequireComponent(typeof(CharacterDriver))]
+    public class CharacterDriverDataAssigner : MonoBehaviour
     {
         private void Start()
         {
-            var client = GetComponent<CharacterController>();
-            var data = Configuraions.CharacterControllerData;
+            var client = GetComponent<CharacterDriver>();
+            var data = Configuraions.CharacterDriverData;
 
             client.Gravity = data.Gravity;
             client.MoveForce = data.MoveForce;
