@@ -20,7 +20,7 @@ namespace JunkCity.World
         private float progress = 0;
 
 
-        public void Interact(object _)
+        public void Interact(GameObject _)
         {
             if (!platform)
             {

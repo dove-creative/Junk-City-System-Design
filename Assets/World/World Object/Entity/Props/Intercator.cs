@@ -5,9 +5,9 @@ namespace JunkCity.World
 {
     public class Intercator : MonoBehaviour, IInteractable
     {
-        public event Action<object> OnInteract;
+        public event Action<GameObject> OnInteract;
 
-        public void Interact(object target)
+        public void Interact(GameObject target)
         {
             if (!enabled)
                 return;

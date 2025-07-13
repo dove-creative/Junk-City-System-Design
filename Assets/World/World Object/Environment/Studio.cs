@@ -27,7 +27,7 @@ namespace JunkCity.World
             mainCamera.transform.position = GetDesiredPosition();
         }
 
-        public void SetCurtainState(bool close, Action onClosedCallback = null)
+        public void SetCurtainState(bool close, bool fromFirstState, Action onClosedCallback = null)
         {
             if (!curtain)
             {
@@ -36,9 +36,19 @@ namespace JunkCity.World
             }
 
             if (!close)
+            {
+                if (fromFirstState)
+                    curtain.SetToClose();
+
                 curtain.Open();
+            }
             else
+            {
+                if (fromFirstState)
+                    curtain.SetToOpen();
+
                 curtain.Close(onClosedCallback);
+            }
         }
 
         public void SetBackground(Background background) => this.background = background;

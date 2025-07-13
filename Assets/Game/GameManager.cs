@@ -17,7 +17,7 @@ namespace JunkCity
             DontDestroyOnLoad(gameObject);
         }
 
-        protected static void SetStage(StageName scene)
+        public static void SetStage(StageName scene)
         {
             SceneManager.LoadScene(scene.ToString());
         }

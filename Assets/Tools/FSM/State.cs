@@ -4,13 +4,13 @@ namespace JunkCity.Tools
 {
     public partial class FSM<T>
     {
-        public abstract class State
+        public class State
         {
             public string Name { get; private set; }
 
-            public event Action OnOpen;
-            public event Action OnInvoke;
-            public event Action OnClose;
+            public Action OnOpen;
+            public Action OnInvoke;
+            public Action OnClose;
 
             private FSM<T> parent;
             protected T Owner => parent.owner;

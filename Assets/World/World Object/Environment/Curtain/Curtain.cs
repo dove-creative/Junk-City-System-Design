@@ -15,6 +15,18 @@ namespace JunkCity.World
         private void Awake()
         {
             animator = GetComponent<Animator>();
+            SetToOpen();
+        }
+
+        public void SetToOpen()
+        {
+            animator.Play(AnimName, -1, 1);
+            animator.StopPlayback();
+        }
+        public void SetToClose()
+        {
+            animator.Play(AnimName, -1, 0);
+            animator.StopPlayback();
         }
 
         public void Open()
@@ -22,7 +34,6 @@ namespace JunkCity.World
             animator.SetFloat("Speed", 1);
             animator.Play(AnimName, -1, 0);
         }
-        
         public void Close(Action onClosedCallback = null)
         {
             this.onClosedCallback = onClosedCallback;

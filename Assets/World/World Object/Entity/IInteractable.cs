@@ -1,7 +1,9 @@
+using UnityEngine;
+
 namespace JunkCity.World
 {
     public interface IInteractable
     {
-        void Interact(object target);
+        void Interact(GameObject target);
     }
 }

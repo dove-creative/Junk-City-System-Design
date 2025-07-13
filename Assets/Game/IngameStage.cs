@@ -1,14 +1,17 @@
-using JunkCity.World;
+using System;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
+using JunkCity.World;
 
 namespace JunkCity
 {
     public class IngameStage : MonoBehaviour
     {
+        public event Action OnStageCompleted;
+
         [Header("Real World")]
         [SerializeField] private GameObject realWorld;
         [SerializeField] private Intercator pc;
+        [SerializeField] private Gate gate;
 
         [Header("Virtual World")]
         [SerializeField] private GameObject virtualWorld;
@@ -28,31 +31,41 @@ namespace JunkCity
         private void Start()
         {
             realWorld.SetActive(true);
-            pc.OnInteract += _ => SetWorld(true);
+            pc.OnInteract += t =>
+            {
+                if (t.CompareTag("Player"))
+                    SetWorld(true);
+            };
+            gate.OnInteract += () => OnStageCompleted?.Invoke();
 
             virtualWorld.SetActive(false);
             key.OnPlayerCollided += () =>
             {
                 SetWorld(false);
                 pc.enabled = false;
+
+                OnKeyAcquired();
             };
 
             player.transform.position = initialPlayerPosition;
-
-            Environment.Studio.SetCurtainState(false);
+            World.Environment.Studio.SetCurtainState(false, true);
         }
 
+        private void OnKeyAcquired()
+        {
+            gate.Activate();
+        }
 
-        void SetWorld(bool toVirtualWorld)
+        private void SetWorld(bool toVirtualWorld)
         {
             if (settingWorld) return;
             settingWorld = true;
 
             beforeWorldPlayerPosition = player.transform.position;
 
-            Environment.Studio.SetCurtainState(true, () =>
+            World.Environment.Studio.SetCurtainState(true, false, () =>
             {
-                Environment.Background.Color =
+                World.Environment.Background.Color =
                     toVirtualWorld ? Color.blue : Color.white;
 
                 realWorld.SetActive(!toVirtualWorld);
@@ -67,7 +80,7 @@ namespace JunkCity
                     player.transform.position = beforeWorldPlayerPosition;
 
                 settingWorld = false;
-                Environment.Studio.SetCurtainState(false);
+                World.Environment.Studio.SetCurtainState(false, false);
             });
         }
     }

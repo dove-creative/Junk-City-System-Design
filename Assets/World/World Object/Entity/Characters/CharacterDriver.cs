@@ -1,14 +1,13 @@
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using UnityEngine;
 
 namespace JunkCity.World
 {
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(Rigidbody2D))] 
     public class CharacterDriver : MonoBehaviour
     {
-        public ReadOnlyCollection<IInteractable> CurrentInteractableEntities { get; private set; }
-        private List<IInteractable> currentInteractableEntities;
+        [SerializeField] private bool setCharacterDriverConfiguration = false;
+
 
         [Header("Global Motion Settings")]
         public float Gravity
@@ -33,24 +32,16 @@ namespace JunkCity.World
         {
             rb = GetComponent<Rigidbody2D>();
 
-            currentInteractableEntities = new();
-            CurrentInteractableEntities = currentInteractableEntities.AsReadOnly();
-        }
+            if (setCharacterDriverConfiguration)
+            {
+                var data = Configuraions.CharacterDriverData;
 
-
-        private void OnTriggerEnter2D(Collider2D collider)
-        {
-            if (!collider.gameObject.TryGetComponent<IInteractable>(out var target))
-                return;
-
-            currentInteractableEntities.Add(target);
-        }
-        private void OnTriggerExit2D(Collider2D collider)
-        {
-            if (!collider.gameObject.TryGetComponent<IInteractable>(out var target))
-                return;
-
-            currentInteractableEntities.Remove(target);
+                Gravity = data.Gravity;
+                MoveForce = data.MoveForce;
+                MaxSpeed = data.MaxSpeed;
+                FrictionRatio = data.FrictionRatio;
+                JumpForce = data.JumpForce;
+            }
         }
 
         public void MoveHorizontal(float direction)
@@ -60,14 +51,14 @@ namespace JunkCity.World
         public void Jump(float value)
         {
             if (value > 0 && Mathf.Approximately(rb.linearVelocityY, 0))
-                rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+                rb.AddForce(value * JumpForce * Vector2.up, ForceMode2D.Impulse);
         }
 
         private void FixedUpdate()
         {
             if (direction != 0)
                 rb.AddForce(direction * MoveForce * Vector2.right);
-            else if (!Mathf.Approximately(rb.linearVelocityX, 0))
+            else if (Mathf.Abs(rb.linearVelocityX) > 0.1f)
                 rb.AddForce(FrictionRatio * -rb.linearVelocityX * Vector2.right);
             else
                 rb.linearVelocityX = 0;
