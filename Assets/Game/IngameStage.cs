@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using JunkCity.World;
 
@@ -15,18 +16,31 @@ namespace JunkCity
 
         [Header("Virtual World")]
         [SerializeField] private GameObject virtualWorld;
+        [SerializeField] private List<Enemy> enemies;
         [SerializeField] private Key key;
 
         [Header("Common")]
-        [SerializeField] private Transform player;
+        [SerializeField] private Player player;
         [SerializeField] private Vector2 initialPlayerPosition;
         [SerializeField] private PlatformMovementController platformMovementController;
 
+        private bool isVirtualWorld = false;
         private bool isFirstTransition = true;
         private Vector2 beforeWorldPlayerPosition;
 
         private bool settingWorld = false;
 
+
+        private void Awake()
+        {
+            gate.OnInteract += () => World.Environment.Studio.SetCurtainState(true);
+
+            foreach (var enemy in enemies)
+            {
+                var _enemy = enemy;
+                _enemy.OnDied += () => enemies.Remove(_enemy);
+            }
+        }
 
         private void Start()
         {
@@ -54,6 +68,19 @@ namespace JunkCity
         private void OnKeyAcquired()
         {
             gate.Activate();
+            Debug.Log("게이트 활성화됨");
+        }
+
+        private void Update()
+        {
+            if (isVirtualWorld)
+            {
+                if (!key.Activated && enemies.Count == 0)
+                {
+                    key.Activate();
+                    Debug.Log("키 활성화됨");
+                }
+            }
         }
 
         private void SetWorld(bool toVirtualWorld)
@@ -63,11 +90,20 @@ namespace JunkCity
 
             beforeWorldPlayerPosition = player.transform.position;
 
-            World.Environment.Studio.SetCurtainState(true, false, () =>
+            World.Environment.Studio.SetCurtainState(true, onClosedCallback: () =>
             {
-                World.Environment.Background.Color =
-                    toVirtualWorld ? Color.blue : Color.white;
+                if (toVirtualWorld)
+                {
+                    World.Environment.Background.Color = Color.blue;
+                    player.SetOwnWeapons();
+                }
+                else
+                {
+                    World.Environment.Background.Color = Color.white;
+                    player.DetachOwnWeapons();
+                }
 
+                isVirtualWorld = toVirtualWorld;
                 realWorld.SetActive(!toVirtualWorld);
                 virtualWorld.SetActive(toVirtualWorld);
 
@@ -80,7 +116,7 @@ namespace JunkCity
                     player.transform.position = beforeWorldPlayerPosition;
 
                 settingWorld = false;
-                World.Environment.Studio.SetCurtainState(false, false);
+                World.Environment.Studio.SetCurtainState(false);
             });
         }
     }

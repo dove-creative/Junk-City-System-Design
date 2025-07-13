@@ -27,7 +27,7 @@ namespace JunkCity.World
             mainCamera.transform.position = GetDesiredPosition();
         }
 
-        public void SetCurtainState(bool close, bool fromFirstState, Action onClosedCallback = null)
+        public void SetCurtainState(bool close, bool fromFirstState = false, Action onClosedCallback = null)
         {
             if (!curtain)
             {

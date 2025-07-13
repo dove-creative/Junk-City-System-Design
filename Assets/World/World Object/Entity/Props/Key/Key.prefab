@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3788101991395381858}
-  - component: {fileID: 2446901773147765227}
-  - component: {fileID: 3876091789998042681}
   - component: {fileID: 3051356267088418982}
-  - component: {fileID: 726416833823183392}
   - component: {fileID: 1446173794995625963}
+  - component: {fileID: 726416833823183392}
   - component: {fileID: 585563586246969386}
+  - component: {fileID: 3876091789998042681}
+  - component: {fileID: 2446901773147765227}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -37,40 +37,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2446901773147765227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8459920296338259464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38244d30a5fc7aa42b3c9c28c27a32e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!95 &3876091789998042681
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8459920296338259464}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2b60ba09b5d7a9945876b5e695e40abd, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &3051356267088418982
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -126,19 +92,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &726416833823183392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8459920296338259464}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 806a88a9ab7e74a4f927ba61f55e72a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  setColliderSizeOnStart: 0
 --- !u!61 &1446173794995625963
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -185,6 +138,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.36, y: 2.5}
   m_EdgeRadius: 0
+--- !u!114 &726416833823183392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8459920296338259464}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 806a88a9ab7e74a4f927ba61f55e72a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setColliderSizeOnStart: 0
 --- !u!50 &585563586246969386
 Rigidbody2D:
   serializedVersion: 5
@@ -212,3 +178,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!95 &3876091789998042681
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8459920296338259464}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b60ba09b5d7a9945876b5e695e40abd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2446901773147765227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8459920296338259464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38244d30a5fc7aa42b3c9c28c27a32e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deactivatedColor: {r: 1, g: 0.9803922, b: 0.9411765, a: 0.29803923}

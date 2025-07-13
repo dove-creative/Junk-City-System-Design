@@ -9,14 +9,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6016987114666197330}
-  - component: {fileID: 1432345471208624277}
-  - component: {fileID: 3017008238875891706}
   - component: {fileID: 4385899566195369052}
   - component: {fileID: 2492368750760861571}
   - component: {fileID: 2643058473876924640}
+  - component: {fileID: 2759429685464917578}
+  - component: {fileID: 3017008238875891706}
+  - component: {fileID: 1432345471208624277}
+  - component: {fileID: 4762470074216819334}
   m_Layer: 0
-  m_Name: Monster
-  m_TagString: Player
+  m_Name: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,37 +38,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1432345471208624277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7640180714502223707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1227521c997b2f74c81fd932f37482e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  patrolTime: 0.5
-  waitingTime: 0.6
-  idlingTime: 0.5
---- !u!114 &3017008238875891706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7640180714502223707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cee329f47add8f5468ee2b4de776c26d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveForce: 50
-  MaxSpeed: 5
-  FrictionRatio: 3
-  JumpForce: 12
 --- !u!212 &4385899566195369052
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -185,3 +156,62 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &2759429685464917578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640180714502223707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd90af78f15d30649b50a55720544f7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  accessories: []
+--- !u!114 &3017008238875891706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640180714502223707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee329f47add8f5468ee2b4de776c26d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setCharacterDriverConfiguration: 0
+  MoveForce: 50
+  MaxSpeed: 5
+  FrictionRatio: 3
+  JumpForce: 12
+--- !u!114 &1432345471208624277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640180714502223707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1227521c997b2f74c81fd932f37482e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolTime: 0.5
+  waitingTime: 0.6
+  idlingTime: 0.5
+--- !u!114 &4762470074216819334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640180714502223707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8166f81d39eaba40be9a1855deaa9d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  damage: 10
