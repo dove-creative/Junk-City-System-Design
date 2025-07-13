@@ -2,19 +2,25 @@ using UnityEngine;
 
 namespace JunkCity.World
 {
-    public class PlaftormMovementController : MonoBehaviour, IInteractable
+    public class PlatformMovementController : MonoBehaviour, IInteractable
     {
+        [Header("Platform")]
         [SerializeField] private GameObject platform;
         [SerializeField] private Vector2 from;
         [SerializeField] private Vector2 to;
         [SerializeField] private float speed = 1;
+
+        [Header("Lever")]
+        [SerializeField] private GameObject lever;
+        [SerializeField] private Color deactivatedLeverColor;
+        [SerializeField] private Color activatedLeverColor;
 
         private bool working = false;
         private bool direction = true;
         private float progress = 0;
 
 
-        public void Interact()
+        public void Interact(object _)
         {
             if (!platform)
             {
@@ -22,7 +28,20 @@ namespace JunkCity.World
                 return;
             }
 
-            working = !working;
+            if (!working)
+            {
+                working = true;
+
+                if (lever && lever.TryGetComponent<SpriteRenderer>(out var renderer))
+                    renderer.color = activatedLeverColor;
+            }
+            else
+            {
+                working = false;
+
+                if (lever && lever.TryGetComponent<SpriteRenderer>(out var renderer))
+                    renderer.color = deactivatedLeverColor;
+            }
         }
 
         private void FixedUpdate()

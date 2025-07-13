@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace JunkCity
 {
@@ -14,6 +15,11 @@ namespace JunkCity
 
             instance = this;
             DontDestroyOnLoad(gameObject);
+        }
+
+        protected static void SetStage(StageName scene)
+        {
+            SceneManager.LoadScene(scene.ToString());
         }
     }
 }

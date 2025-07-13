@@ -26,7 +26,7 @@ namespace JunkCity.World
         internal void OnInteract(InputValue _)
         {
             foreach (var entity in driver.CurrentInteractableEntities)
-                entity.Interact();
+                entity.Interact(this);
         }
     }
 }

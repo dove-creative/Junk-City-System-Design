@@ -2,6 +2,6 @@ namespace JunkCity.World
 {
     public interface IInteractable
     {
-        void Interact();
+        void Interact(object target);
     }
 }

@@ -6,7 +6,14 @@ namespace JunkCity.Tools
     [RequireComponent(typeof(SpriteRenderer), typeof(BoxCollider2D))]
     public class ColliderSizeHandler : MonoBehaviour
     {
-        private void Awake() => SetColliderSize();
+        [SerializeField] private bool setColliderSizeOnStart = false;
+
+
+        private void Awake()
+        {
+            if (setColliderSizeOnStart)
+                SetColliderSize();
+        }
 
         public void SetColliderSize()
         {

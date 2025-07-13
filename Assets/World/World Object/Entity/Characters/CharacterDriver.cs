@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JunkCity.World
 {
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Rigidbody2D))] 
     public class CharacterDriver : MonoBehaviour
     {
         public ReadOnlyCollection<IInteractable> CurrentInteractableEntities { get; private set; }
