@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2492368750760861571}
   - component: {fileID: 2643058473876924640}
   - component: {fileID: 2759429685464917578}
-  - component: {fileID: 3017008238875891706}
+  - component: {fileID: 7675374501916671078}
   - component: {fileID: 1432345471208624277}
   - component: {fileID: 4762470074216819334}
   m_Layer: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   accessories: []
---- !u!114 &3017008238875891706
+--- !u!114 &7675374501916671078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,14 +178,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7640180714502223707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cee329f47add8f5468ee2b4de776c26d, type: 3}
+  m_Script: {fileID: 11500000, guid: 900d3b4b9d5611849906afc5d6e645ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   setCharacterDriverConfiguration: 0
-  MoveForce: 50
-  MaxSpeed: 5
-  FrictionRatio: 3
-  JumpForce: 12
+  MoveForce: 40
+  MaxSpeed: 10
+  FrictionRatio: 10
+  JumpForce: 15
 --- !u!114 &1432345471208624277
 MonoBehaviour:
   m_ObjectHideFlags: 0

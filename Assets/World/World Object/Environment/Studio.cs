@@ -51,8 +51,6 @@ namespace JunkCity.World
             }
         }
 
-        public void SetBackground(Background background) => this.background = background;
-
         private void LateUpdate()
         {
             if (!mainCamera || !target)

@@ -7,8 +7,6 @@ namespace JunkCity.World
     {
         private static Environment current;
 
-        [SerializeField] private bool assignBackgroundToStudio = true;
-
         public static Studio Studio
         {
             get
@@ -37,9 +35,6 @@ namespace JunkCity.World
         private void Awake()
         {
             current = this;
-
-            if (assignBackgroundToStudio && studio && background)
-                studio.SetBackground(background);
         }
 
         private void OnDestroy()

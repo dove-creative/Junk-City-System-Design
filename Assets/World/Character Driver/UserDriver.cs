@@ -4,16 +4,16 @@ using UnityEngine.InputSystem;
 
 namespace JunkCity.World
 {
-    [RequireComponent(typeof(CharacterDriver), typeof(PlayerInput))]
+    [RequireComponent(typeof(CharacterMotionController), typeof(PlayerInput))]
     public class UserDriver : MonoBehaviour
     {
-        private CharacterDriver driver;
+        private CharacterMotionController driver;
         private List<IInteractable> interactables;
 
 
         private void Awake()
         {
-            driver = GetComponent<CharacterDriver>();
+            driver = GetComponent<CharacterMotionController>();
             interactables = new();
         }
 

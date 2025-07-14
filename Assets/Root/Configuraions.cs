@@ -4,8 +4,8 @@ namespace JunkCity
 {
     public class Configuraions : MonoBehaviour
     {
-        [SerializeField] CharacterDriverData characterDriverData;
-        public static CharacterDriverData CharacterDriverData => instance.characterDriverData;
+        [SerializeField] CMTData cmtData;
+        public static CMTData CMTData => instance.cmtData;
 
         private static Configuraions instance;
 

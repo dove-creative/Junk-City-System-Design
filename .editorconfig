@@ -1,0 +1,4 @@
+﻿[*.{cs,vb}]
+
+# IDE0044: 읽기 전용 한정자 추가
+dotnet_diagnostic.IDE0044.severity = none

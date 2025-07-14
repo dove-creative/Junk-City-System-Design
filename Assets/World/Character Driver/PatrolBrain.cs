@@ -3,10 +3,10 @@ using JunkCity.Tools;
 
 namespace JunkCity.World
 {
-    [RequireComponent(typeof(CharacterDriver))]
+    [RequireComponent(typeof(CharacterMotionController))]
     public class PatrolBrain : MonoBehaviour
     {
-        private CharacterDriver driver;
+        private CharacterMotionController driver;
         private FSM<PatrolBrain> fsm;
 
         [SerializeField] private float patrolTime = 0.5f;
@@ -17,7 +17,7 @@ namespace JunkCity.World
 
         private void Awake()
         {
-            driver = GetComponent<CharacterDriver>();
+            driver = GetComponent<CharacterMotionController>();
 
             var states = new FSM<PatrolBrain>.State[]
             {

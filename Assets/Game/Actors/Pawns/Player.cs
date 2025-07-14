@@ -7,8 +7,8 @@ using JunkCity.World;
 
 namespace JunkCity
 {
-    [RequireComponent(typeof(SpriteRenderer), typeof(AccessoryManager), typeof(CharacterDriver))]
-    public class Player : MonoBehaviour, IDamageable
+    [RequireComponent(typeof(SpriteRenderer), typeof(AccessoryManager), typeof(CharacterMotionController))]
+    public class Player : MonoBehaviour, IPawn, IDamageable
     {
         public event Action OnDied;
 
@@ -92,7 +92,7 @@ namespace JunkCity
 
         private void Die()
         {
-            GetComponent<CharacterDriver>().enabled = false;
+            GetComponent<CharacterMotionController>().enabled = false;
 
             Debug.Log("플레이어 사망");
             OnDied?.Invoke();

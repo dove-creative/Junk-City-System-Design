@@ -14,9 +14,8 @@ GameObject:
   - component: {fileID: 155789838648003607}
   - component: {fileID: 7694533805930766620}
   - component: {fileID: 4596788295582804214}
-  - component: {fileID: 1701653371830213666}
+  - component: {fileID: 8804863706261011679}
   - component: {fileID: 7789213239606837664}
-  - component: {fileID: 471745318765189302}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -200,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   accessories: []
---- !u!114 &1701653371830213666
+--- !u!114 &8804863706261011679
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,10 +208,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6366799443309993783}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cee329f47add8f5468ee2b4de776c26d, type: 3}
+  m_Script: {fileID: 11500000, guid: 900d3b4b9d5611849906afc5d6e645ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setCharacterDriverConfiguration: 1
+  setCharacterDriverConfiguration: 0
   MoveForce: 100
   MaxSpeed: 20
   FrictionRatio: 18
@@ -229,18 +228,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebae0ff7d67b3d4eb9e5cded1b5bffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &471745318765189302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6366799443309993783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85c2485306ed57346b755b954a2edd14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 0
-  invulnerabilityDuration: 1
-  invulnerabilityColor: {r: 0.64779866, g: 0, b: 0.5732232, a: 1}

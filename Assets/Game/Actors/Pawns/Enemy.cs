@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace JunkCity
 {
-    public class Enemy : MonoBehaviour, IDamageable
+    public class Enemy : MonoBehaviour, IPawn, IDamageable
     {
         public event Action OnDamaged;
         public event Action OnDied;

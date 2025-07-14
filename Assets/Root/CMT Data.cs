@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace JunkCity
 {
-    [CreateAssetMenu(fileName = "CharacterDriverData", menuName = "Scriptable Objects/Character Driver Data")]
-    public class CharacterDriverData : ScriptableObject
+    [CreateAssetMenu(fileName = "CMT Data", menuName = "Scriptable Objects/CMT Data")]
+    public class CMTData : ScriptableObject
     {
         [Header("Global Settings")]
         public float Gravity;

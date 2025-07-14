@@ -4,7 +4,7 @@ namespace JunkCity.World
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Rigidbody2D))] 
-    public class CharacterDriver : MonoBehaviour
+    public class CharacterMotionController : MonoBehaviour
     {
         [SerializeField] private bool setCharacterDriverConfiguration = false;
 
@@ -34,7 +34,7 @@ namespace JunkCity.World
 
             if (setCharacterDriverConfiguration)
             {
-                var data = Configuraions.CharacterDriverData;
+                var data = Configuraions.CMTData;
 
                 Gravity = data.Gravity;
                 MoveForce = data.MoveForce;
