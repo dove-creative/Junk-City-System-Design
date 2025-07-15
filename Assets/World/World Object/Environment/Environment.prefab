@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024d361b349a0c8438c7cc23856ce042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assignBackgroundToStudio: 1
   studio: {fileID: 1892907968141214912}
   background: {fileID: 6769309921677117354}
 --- !u!1001 &5525875483617440636

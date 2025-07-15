@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace JunkCity
+namespace JunkCity.Game
 {
     public class Enemy : MonoBehaviour, IPawn, IDamageable
     {

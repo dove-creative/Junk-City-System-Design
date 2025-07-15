@@ -2,7 +2,7 @@ namespace JunkCity
 {
     public enum StageName
     {
-        Menu,
+        Lobby,
         Ingame,
     }
 }

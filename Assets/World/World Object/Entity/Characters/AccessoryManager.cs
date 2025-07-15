@@ -1,25 +1,19 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Collections.ObjectModel;
 using UnityEngine;
 
 namespace JunkCity.World
 {
     public class AccessoryManager : MonoBehaviour
     {
-        public IEnumerable<IWeapon> Weapons
-        {
-            get => accessories?.Select(a =>
-            {
-                if (a.TryGetComponent(out IWeapon weapon))
-                    return weapon;
-                else
-                    return null;
-            }).Where(w => w != null) ?? Array.Empty<IWeapon>();
-        }
-
+        public ReadOnlyCollection<GameObject> Accessories;
         [SerializeField] private List<GameObject> accessories;
 
+
+        private void Awake()
+        {
+            Accessories = accessories.AsReadOnly();
+        }
 
         public void Attach(GameObject accessory)
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using JunkCity.World;
 
-namespace JunkCity
+namespace JunkCity.Game
 {
     [RequireComponent(typeof(SpriteRenderer), typeof(AccessoryManager), typeof(CharacterMotionController))]
     public class Player : MonoBehaviour, IPawn, IDamageable
@@ -55,8 +55,11 @@ namespace JunkCity
             if (!alive)
                 return;
 
-            foreach (var weapen in accessoryManager.Weapons)
-                weapen.Attack();
+            foreach (var accessory in accessoryManager.Accessories)
+            {
+                if (accessory.TryGetComponent(out IWeapon weapon))
+                    weapon.Attack();
+            }
         }
 
         public void TakeDamage(float damage)

@@ -1,4 +1,4 @@
-namespace JunkCity
+namespace JunkCity.Game
 {
     public interface IDamageable
     {
